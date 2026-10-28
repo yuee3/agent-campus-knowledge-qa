@@ -1,0 +1,39 @@
+{
+  "run_id": "r-8cd508fc",
+  "input_summary": {
+    "question": "那事假呢？",
+    "has_history": true
+  },
+  "status": "answered",
+  "message": "已依据知识库原文回答",
+  "answer": "根据《事假与病假规定》（D04 v1.1，2025-02-20）：事假单次不超过 3 天，需提前 1 天向直属上级申请",
+  "citations": [
+    {
+      "doc_id": "D04",
+      "title": "事假与病假规定",
+      "version": "v1.1",
+      "date": "2025-02-20",
+      "quote": "事假单次不超过 3 天，需提前 1 天向直属上级申请"
+    }
+  ],
+  "conflicts": null,
+  "pending_confirmation": null,
+  "gaps": [],
+  "steps": [
+    {
+      "tool": "search_docs",
+      "query": "事假",
+      "doc_id": null,
+      "status": "success"
+    },
+    {
+      "tool": "read_doc",
+      "query": null,
+      "doc_id": "D04",
+      "status": "success"
+    }
+  ],
+  "steps_used": 3,
+  "step_limit": 12,
+  "trace_file": "examples/followup.trace.json"
+}

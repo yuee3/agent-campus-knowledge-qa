@@ -1,0 +1,6 @@
+{
+  "question": "年假有几天？",
+  "inject": {
+    "search_fail_once": true
+  }
+}

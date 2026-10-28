@@ -1,0 +1,85 @@
+{
+  "run_id": "r-5ecd54c1",
+  "started_at": "2026-10-28T18:27:48",
+  "task": {
+    "question": "发票多久之内要交？"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "tool_call",
+      "tool": "search_docs",
+      "tool_args": {
+        "query": "发票多久之内要交"
+      },
+      "observation": {
+        "status": "ok",
+        "query": "发票多久之内要交",
+        "results": [
+          {
+            "doc_id": "D01",
+            "title": "报销管理制度",
+            "version": "v2.1",
+            "date": "2025-03-10",
+            "snippet": "报销管理制度 员工费用报销期限为 30 天，自发票开具日期起算。超过期限提交的报销单据将被退回，需重新发起申请。",
+            "score": 1
+          }
+        ]
+      },
+      "decision_basis": "尚未检索，将问句改写为检索词「发票多久之内要交」发起检索"
+    },
+    {
+      "step": 2,
+      "action": "tool_call",
+      "tool": "read_doc",
+      "tool_args": {
+        "doc_id": "D01"
+      },
+      "observation": {
+        "status": "ok",
+        "doc_id": "D01",
+        "doc": {
+          "doc_id": "D01",
+          "title": "报销管理制度",
+          "version": "v2.1",
+          "date": "2025-03-10",
+          "content": "员工费用报销期限为 30 天，自发票开具日期起算。超过期限提交的报销单据将被退回，需重新发起申请。"
+        }
+      },
+      "decision_basis": "按相关度第 1 位读取文档 D01 原文，引用与冲突查证必须基于原文而非检索摘要"
+    }
+  ],
+  "final": {
+    "steps_used": 3,
+    "status": "answered",
+    "message": "已依据知识库原文回答",
+    "answer": "根据《报销管理制度》（D01 v2.1，2025-03-10）：员工费用报销期限为 30 天，自发票开具日期起算",
+    "citations": [
+      {
+        "doc_id": "D01",
+        "title": "报销管理制度",
+        "version": "v2.1",
+        "date": "2025-03-10",
+        "quote": "员工费用报销期限为 30 天，自发票开具日期起算"
+      }
+    ],
+    "conflicts": null,
+    "pending_confirmation": null,
+    "gaps": [],
+    "steps": [
+      {
+        "tool": "search_docs",
+        "query": "发票多久之内要交",
+        "doc_id": null,
+        "status": "success"
+      },
+      {
+        "tool": "read_doc",
+        "query": null,
+        "doc_id": "D01",
+        "status": "success"
+      }
+    ],
+    "step_limit": 12
+  }
+}

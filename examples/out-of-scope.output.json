@@ -1,0 +1,33 @@
+{
+  "run_id": "r-dd941611",
+  "input_summary": {
+    "question": "公司年会什么时候开？",
+    "has_history": false
+  },
+  "status": "out_of_scope",
+  "message": "知识库中未找到与问题相关的文档，无法回答",
+  "answer": null,
+  "citations": [],
+  "conflicts": null,
+  "pending_confirmation": null,
+  "gaps": [
+    "知识库中未检索到与该问题相关的制度或 FAQ 文档（已尝试改写检索词与原始问句各一次）"
+  ],
+  "steps": [
+    {
+      "tool": "search_docs",
+      "query": "公司年会什么时候开",
+      "doc_id": null,
+      "status": "success"
+    },
+    {
+      "tool": "search_docs",
+      "query": "公司年会什么时候开？",
+      "doc_id": null,
+      "status": "success"
+    }
+  ],
+  "steps_used": 3,
+  "step_limit": 12,
+  "trace_file": "examples/out-of-scope.trace.json"
+}

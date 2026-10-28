@@ -1,0 +1,64 @@
+{
+  "run_id": "r-dd941611",
+  "started_at": "2026-10-28T18:27:47",
+  "task": {
+    "question": "公司年会什么时候开？"
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "tool_call",
+      "tool": "search_docs",
+      "tool_args": {
+        "query": "公司年会什么时候开"
+      },
+      "observation": {
+        "status": "ok",
+        "query": "公司年会什么时候开",
+        "results": []
+      },
+      "decision_basis": "尚未检索，将问句改写为检索词「公司年会什么时候开」发起检索"
+    },
+    {
+      "step": 2,
+      "action": "tool_call",
+      "tool": "search_docs",
+      "tool_args": {
+        "query": "公司年会什么时候开？"
+      },
+      "observation": {
+        "status": "ok",
+        "query": "公司年会什么时候开？",
+        "results": []
+      },
+      "decision_basis": "改写后的检索词未命中，改用原始问句补充检索一次"
+    }
+  ],
+  "final": {
+    "steps_used": 3,
+    "status": "out_of_scope",
+    "message": "知识库中未找到与问题相关的文档，无法回答",
+    "answer": null,
+    "citations": [],
+    "conflicts": null,
+    "pending_confirmation": null,
+    "gaps": [
+      "知识库中未检索到与该问题相关的制度或 FAQ 文档（已尝试改写检索词与原始问句各一次）"
+    ],
+    "steps": [
+      {
+        "tool": "search_docs",
+        "query": "公司年会什么时候开",
+        "doc_id": null,
+        "status": "success"
+      },
+      {
+        "tool": "search_docs",
+        "query": "公司年会什么时候开？",
+        "doc_id": null,
+        "status": "success"
+      }
+    ],
+    "step_limit": 12
+  }
+}

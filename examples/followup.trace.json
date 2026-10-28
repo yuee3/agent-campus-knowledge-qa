@@ -1,0 +1,91 @@
+{
+  "run_id": "r-8cd508fc",
+  "started_at": "2026-10-28T18:27:48",
+  "task": {
+    "question": "那事假呢？",
+    "history": [
+      {
+        "question": "年假有几天？",
+        "answer": "根据《考勤与假期制度》（D03 v3.0，2025-01-15）：正式员工每年享有 5 天带薪年假，年假需提前 3 个工作日在系统申请，当年未休完的年假可顺延至次年 3 月底。"
+      }
+    ]
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "tool_call",
+      "tool": "search_docs",
+      "tool_args": {
+        "query": "事假"
+      },
+      "observation": {
+        "status": "ok",
+        "query": "事假",
+        "results": [
+          {
+            "doc_id": "D04",
+            "title": "事假与病假规定",
+            "version": "v1.1",
+            "date": "2025-02-20",
+            "snippet": "事假与病假规定 事假单次不超过 3 天，需提前 1 天向直属上级申请；病假需提供医院证明，连续病假超过 5 天需 HR ",
+            "score": 3
+          }
+        ]
+      },
+      "decision_basis": "当前问题「那事假呢？」是省略式追问，结合上文话题改写检索词为「事假」"
+    },
+    {
+      "step": 2,
+      "action": "tool_call",
+      "tool": "read_doc",
+      "tool_args": {
+        "doc_id": "D04"
+      },
+      "observation": {
+        "status": "ok",
+        "doc_id": "D04",
+        "doc": {
+          "doc_id": "D04",
+          "title": "事假与病假规定",
+          "version": "v1.1",
+          "date": "2025-02-20",
+          "content": "事假单次不超过 3 天，需提前 1 天向直属上级申请；病假需提供医院证明，连续病假超过 5 天需 HR 备案。"
+        }
+      },
+      "decision_basis": "按相关度第 1 位读取文档 D04 原文，引用与冲突查证必须基于原文而非检索摘要"
+    }
+  ],
+  "final": {
+    "steps_used": 3,
+    "status": "answered",
+    "message": "已依据知识库原文回答",
+    "answer": "根据《事假与病假规定》（D04 v1.1，2025-02-20）：事假单次不超过 3 天，需提前 1 天向直属上级申请",
+    "citations": [
+      {
+        "doc_id": "D04",
+        "title": "事假与病假规定",
+        "version": "v1.1",
+        "date": "2025-02-20",
+        "quote": "事假单次不超过 3 天，需提前 1 天向直属上级申请"
+      }
+    ],
+    "conflicts": null,
+    "pending_confirmation": null,
+    "gaps": [],
+    "steps": [
+      {
+        "tool": "search_docs",
+        "query": "事假",
+        "doc_id": null,
+        "status": "success"
+      },
+      {
+        "tool": "read_doc",
+        "query": null,
+        "doc_id": "D04",
+        "status": "success"
+      }
+    ],
+    "step_limit": 12
+  }
+}

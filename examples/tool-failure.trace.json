@@ -1,0 +1,109 @@
+{
+  "run_id": "r-12ac90c2",
+  "started_at": "2026-10-28T18:27:48",
+  "task": {
+    "question": "年假有几天？",
+    "inject": {
+      "search_fail_once": true
+    }
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "tool_call",
+      "tool": "search_docs",
+      "tool_args": {
+        "query": "年假 几天"
+      },
+      "observation": {
+        "status": "failed",
+        "query": "年假 几天",
+        "error": "transient",
+        "message": "检索失败：检索服务临时不可用（注入的单次故障）"
+      },
+      "decision_basis": "尚未检索，将问句改写为检索词「年假 几天」发起检索"
+    },
+    {
+      "step": 2,
+      "action": "tool_call",
+      "tool": "search_docs",
+      "tool_args": {
+        "query": "年假 几天"
+      },
+      "observation": {
+        "status": "ok",
+        "query": "年假 几天",
+        "results": [
+          {
+            "doc_id": "D03",
+            "title": "考勤与假期制度",
+            "version": "v3.0",
+            "date": "2025-01-15",
+            "snippet": "考勤与假期制度 正式员工每年享有 5 天带薪年假，年假需提前 3 个工作日在系统申请，当年未休完的年假可顺延至次年 3 ",
+            "score": 1
+          }
+        ]
+      },
+      "decision_basis": "search_docs 上次返回失败（检索失败：检索服务临时不可用（注入的单次故障）），按失败处理策略重试一次，保留已成功步骤"
+    },
+    {
+      "step": 3,
+      "action": "tool_call",
+      "tool": "read_doc",
+      "tool_args": {
+        "doc_id": "D03"
+      },
+      "observation": {
+        "status": "ok",
+        "doc_id": "D03",
+        "doc": {
+          "doc_id": "D03",
+          "title": "考勤与假期制度",
+          "version": "v3.0",
+          "date": "2025-01-15",
+          "content": "正式员工每年享有 5 天带薪年假，年假需提前 3 个工作日在系统申请，当年未休完的年假可顺延至次年 3 月底。"
+        }
+      },
+      "decision_basis": "按相关度第 1 位读取文档 D03 原文，引用与冲突查证必须基于原文而非检索摘要"
+    }
+  ],
+  "final": {
+    "steps_used": 4,
+    "status": "answered",
+    "message": "已依据知识库原文回答",
+    "answer": "根据《考勤与假期制度》（D03 v3.0，2025-01-15）：正式员工每年享有 5 天带薪年假，年假需提前 3 个工作日在系统申请，当年未休完的年假可顺延至次年 3 月底",
+    "citations": [
+      {
+        "doc_id": "D03",
+        "title": "考勤与假期制度",
+        "version": "v3.0",
+        "date": "2025-01-15",
+        "quote": "正式员工每年享有 5 天带薪年假，年假需提前 3 个工作日在系统申请，当年未休完的年假可顺延至次年 3 月底"
+      }
+    ],
+    "conflicts": null,
+    "pending_confirmation": null,
+    "gaps": [],
+    "steps": [
+      {
+        "tool": "search_docs",
+        "query": "年假 几天",
+        "doc_id": null,
+        "status": "failed"
+      },
+      {
+        "tool": "search_docs",
+        "query": "年假 几天",
+        "doc_id": null,
+        "status": "success"
+      },
+      {
+        "tool": "read_doc",
+        "query": null,
+        "doc_id": "D03",
+        "status": "success"
+      }
+    ],
+    "step_limit": 12
+  }
+}
